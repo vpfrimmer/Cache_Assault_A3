@@ -1,3 +1,7 @@
+/*
+	Ce script attend 3 secondes en partie, vérifie qu'Acre est bien initialisé, et change la radio à la bonne fréquence en fonction du camp du joueur.
+*/
+
 waitUntil { time > 3 };
 waitUntil { [] call acre_api_fnc_isInitialized }; 
 

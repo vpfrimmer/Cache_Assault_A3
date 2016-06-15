@@ -1,3 +1,12 @@
+/*
+	https://www.youtube.com/watch?v=0p_1QSUsbsM
+	
+	params :
+	0 - le minimum
+	1 - le maximum
+	3 - 'round' ou 'floor' ou 'ceil' en fonction du résultat voulu
+*/
+
 _min = _this select 0;
 _max = _this select 1;
 _base = toLower(_this select 2);

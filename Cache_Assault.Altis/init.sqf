@@ -1,56 +1,36 @@
+// Preprocess de la fonction de random pour utilisation future
 random_fnc = compile preprocessFile "random.sqf";
 
 
-// TRI DES MARQUEURS ET DES CACHES
 // On masque tous les marqueurs en relation avec les caches
-for "_x" from 1 to 10 do
+for "_x" from 1 to 100 do
 {
-	for "_y" from 1 to 10 do
+	for "_y" from 1 to 100 do
 	{
 		format ["c%1_m%2_nato",_x,_y] setMarkerAlphaLocal 0;
 		format ["c%1_m%2_fia",_x,_y] setMarkerAlphaLocal 0;
 	};
 };
 
-// On détruit les caches qui n'ont pas été sélectionnées
-{ 
-	_cache = _x select 0;
-	deleteVehicle _cache;
-} forEach cacheArray;
-
-// Pour chaque cache sélectionnée, on..
-{ 
-	// .. récupère ses markers et en sélectionne un au hasard
-	_markersArray = _x select 1;
-	_randomMarkerIndex = [0, count _markersArray - 1, "round"] call random_fnc;
-	_randomMarker = _markersArray select _randomMarkerIndex;
-	
-	// .. affiche le marker sélectionné au hasard, en fonction du camp du joueur
+// Pour chaque marqueur à afficher, on choisit lequel à afficher en fonction du camp du joueur
+{
 	switch (side player) do {
 		case west: {
-			(_randomMarker + '_nato') setMarkerAlphaLocal 1;
+			(_x + '_nato') setMarkerAlphaLocal 1;
 		};
 		case resistance: { 
-			(_randomMarker + '_fia') setMarkerAlphaLocal 1;
+			(_x + '_fia') setMarkerAlphaLocal 1;
 		};
 	};
-	
-	// .. on la déplace à l'endroit sélectionné
-	_cache = _x select 0;
-	_associatedTrigger = _x select 2;
-	_associatedTrigger = _associatedTrigger select _randomMarkerIndex;
-	_newPos = getPos _associatedTrigger;
-	_cache setPos [_newPos select 0, _newPos select 1, _newPos select 2];
-
-} forEach selectedCachesArray;
+} forEach selectedMarkers;
 
 
-// Recuperation des parametres
+// Récupération des paramètres
 inb4CSAT = paramsArray select 0;
 inb4Teleport = paramsArray select 1;
 
 
-// Juste au cas ou..
+// Juste au cas où..
 if ((!isServer) && (player != player)) then
 {
   waitUntil {player == player};
@@ -60,22 +40,25 @@ if ((!isServer) && (player != player)) then
 // On set le trigger pour le départ de renforts en fonction du paramètre
 triggerBackup setTriggerTimeout [inb4CSAT - 150, inb4CSAT, inb4CSAT + 100, false];
 
-
+// Si le joueur est à l'ouest (pun intended)
 if(side player == west) then {
 
+	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
 	if(isNil "bluforFreq") then {
 		bluforFreq = [1, 50, "round"] call random_fnc;
 		publicVariable "bluforFreq";
 	};
 	
+	// On cache tous les marqueurs ennemis
 	for "_x" from 1 to 100 do
 	{
 		format ["fia_%1",_x] setMarkerAlphaLocal 0;
 	};
 	
+	// On active le script de teleport
 	null = [inb4Teleport] execVM "playerPos.sqf";
 	
-
+	// GROS BRIEFING PAS BEAU (oui je sais, j'aurais pu le mettre dans un fichier à part)
 	player createDiaryRecord ["Diary", 
 	["Environnement", "Il est 5h15, le jour se lève et la brume du matin se dissipe doucement. Il fait beau pour l'instant, mais le temps ne va pas tarder à se détériorer."]];
 
@@ -96,26 +79,31 @@ if(side player == west) then {
 	
 };
 
+// Si le joueur est insurgé (#NuitDebout)
 if(side player == resistance) then {
 
+	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
 	if(isNil "indFreq") then {
 		indFreq = [51, 100, "round"] call random_fnc;
 		publicVariable "indFreq";
 	};
 	
+	// On cache tous les marqueurs ennemis
 	for "_x" from 1 to 100 do
 	{
 		format ["nato_%1",_x] setMarkerAlphaLocal 0;
 	};
 	
-	_nul = [] spawn {
+	// On lance un thread qui passe son temps à cacher le point d'insertion des blufor tant que la partie n'est pas lancée.
+	// Pourquoi? Parce que setMarkerPos provoque un setMarkerAlpha 1 global.
+	_hideYoBallsYo = [] spawn {
 		while{time < 5} do
 			{
 				'nato_90' setMarkerAlphaLocal 0;
 			};
 	};
 	
-
+	// GROS BRIEFING PAS BEAU (oui je sais, j'aurais pu le mettre dans un fichier à part)
 	player createDiaryRecord ["Diary", 
 	["Environnement", "Il est 5h15, le jour se lève et la brume du matin se dissipe doucement. Il fait beau pour l'instant, mais le temps ne va pas tarder à se détériorer."]];
 
@@ -136,7 +124,8 @@ if(side player == resistance) then {
 
 };
 
+// On lance le script qui s'occupe de changer le canal de la radio du joueur
 _null = execVM "randomChannelAcre.sqf";
 
-// ROSTER --------------------------------------------------------------------------------
+// Lance le script du roster
 [0,true,true] execVM "roster.sqf";

@@ -1,6 +1,10 @@
+// Stuff ACE de base
 for "_i" from 1 to 5 do {player addItem "ACE_fieldDressing";};
 player addItem "ACE_tourniquet";
+player addItem "ACE_EarPlugs";
+for "_i" from 1 to 2 do {player addItem "ACE_CableTie";};
 
+// On donne leur stuff médical aux médics des deux équipes
 if (player in [medic1, medic2, medic3, medic4]) then {
 	clearAllItemsFromBackpack player;
 	
@@ -19,6 +23,7 @@ if (player in [medic1, medic2, medic3, medic4]) then {
    for "_i" from 1 to 4 do {_unit addItemToBackpack "ACE_tourniquet";};
 };
 
+// On donne de quoi faire boom aux démos
 if (player in [demo1, demo2]) then {
 	clearAllItemsFromBackpack player;
 	
@@ -32,17 +37,5 @@ if (player in [demo1, demo2]) then {
    player addItemToBackpack "ACE_DefusalKit";
 };
 
-player addItem "ACE_EarPlugs";
-for "_i" from 1 to 2 do {player addItem "ACE_CableTie";};
-
-[] execVM "inventory_briefing.sqf"; // lancement du script qui affiche le loadout lors du briefing.
-
-if(side player == west) then {
-
-	
-};
-
-if(side player == resistance) then {
-
-
-};
+// Lancement du script qui affiche le loadout lors du briefing.
+[] execVM "inventory_briefing.sqf"; 

@@ -1,3 +1,4 @@
+// Spectateur ACRE
 [true] call acre_api_fnc_setSpectator;
 
 //Anti mouettes
@@ -10,9 +11,8 @@
 } forEach nearestObjects [player, [], 250];
  
  
-// intégration mode Spectator
- 
+// Spectateur EndGame (merci bisous BIS)
 ["Initialize", [player]] call BIS_fnc_EGSpectator;
 
-// Terminate old spectator
+// Tuons l'ancien spectateur
 ("BIS_fnc_respawnSpectator" call bis_fnc_rscLayer) cuttext ["","plain"];
