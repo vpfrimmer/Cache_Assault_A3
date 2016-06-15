@@ -1,6 +1,6 @@
-// Preprocess de la fonction de random pour utilisation future
+// Preprocess de la fonction de random et loadout pour utilisation future
 random_fnc = compile preprocessFile "random.sqf";
-
+loadout_fnc = compile preprocessFile "factions.sqf";
 
 // On masque tous les marqueurs en relation avec les caches
 for "_x" from 1 to 100 do
@@ -10,6 +10,17 @@ for "_x" from 1 to 100 do
 		format ["c%1_m%2_nato",_x,_y] setMarkerAlphaLocal 0;
 		format ["c%1_m%2_fia",_x,_y] setMarkerAlphaLocal 0;
 	};
+};
+
+// Récupération des paramètres
+inb4CSAT = paramsArray select 0;
+inb4Teleport = paramsArray select 1;
+
+
+// Juste au cas où..
+if ((!isServer) && (player != player)) then
+{
+  waitUntil {player == player};
 };
 
 // Pour chaque marqueur à afficher, on choisit lequel à afficher en fonction du camp du joueur
@@ -23,19 +34,6 @@ for "_x" from 1 to 100 do
 		};
 	};
 } forEach selectedMarkers;
-
-
-// Récupération des paramètres
-inb4CSAT = paramsArray select 0;
-inb4Teleport = paramsArray select 1;
-
-
-// Juste au cas où..
-if ((!isServer) && (player != player)) then
-{
-  waitUntil {player == player};
-};
-
 
 // On set le trigger pour le départ de renforts en fonction du paramètre
 triggerBackup setTriggerTimeout [inb4CSAT - 150, inb4CSAT, inb4CSAT + 100, false];
@@ -108,7 +106,7 @@ if(side player == resistance) then {
 	["Environnement", "Il est 5h15, le jour se lève et la brume du matin se dissipe doucement. Il fait beau pour l'instant, mais le temps ne va pas tarder à se détériorer."]];
 
 	player createDiaryRecord ["Diary", 
-	["Equipement", "Un technical et deux mitrailleuses montables sont disponibles.<br/><br/>Des munitions sont présentes dans les caisses.<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres."]];
+	["Equipement", "Un technical et deux mitrailleuses montables sont disponibles.<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres."]];
 
 	player createDiaryRecord ["Diary", 
 	["Renseignements", "Les forces ennemies sont constituées d'une ou deux équipes d'infanterie. Nos sources ont confirmé qu'aucun véhicule n'a été engagé dans l'opération. Ils viennent de se mettre en mouvement et arriveront d'une direction inconnue. Vous disposez cependant de quelques minutes avant leur arrivée dans la région.<br/><br/>L'artillerie ennemie est presque à portée. Il vous est interdit de quitter la zone marquée d'un cercle rouge sous peine qu'elle ne profite de votre présence en terrain découvert pour vous engager."]];

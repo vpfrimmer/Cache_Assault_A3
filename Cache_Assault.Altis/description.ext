@@ -41,4 +41,20 @@ class Params
 		values[] = {1, 2, 3, 4, 5, 6};
 		default = 3;
 	};
+	
+	class BluforFaction // paramsArray select 3
+	{
+		title = "Faction BLUFOR";
+		texts[] = {"CTRG (MX)", "KSK (G36)", "US SF (M4)", "BAF (L85A2)"};
+		values[] = {0, 1, 2, 3};
+		default = 0;
+	};
+	
+	class IndFaction // paramsArray select 4
+	{
+		title = "Faction Insurgés";
+		texts[] = {"FIA", "Armée du Takistan (FN FAL)", "NPFD (AK)"};
+		values[] = {10, 11, 12};
+		default = 10;
+	};
 };

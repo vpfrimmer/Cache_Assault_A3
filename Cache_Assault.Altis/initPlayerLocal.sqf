@@ -1,3 +1,10 @@
+// Bugfix pour certains AR qui spawnent sans sac
+if(player in [auto1, auto2, auto3, auto4]) then {
+	if( isNull (unitBackpack player) ) then {
+		player addBackpack "B_AssaultPack_rgr";
+	};
+};
+
 // Stuff ACE de base
 for "_i" from 1 to 5 do {player addItem "ACE_fieldDressing";};
 player addItem "ACE_tourniquet";
@@ -36,6 +43,12 @@ if (player in [demo1, demo2]) then {
    player addItemToBackpack "ACE_DeadManSwitch";
    player addItemToBackpack "ACE_DefusalKit";
 };
+
+// On donne une rangetable aux marksmen
+if(player in [sniper1, sniper2]) then {
+	player addItem "ACE_RangeCard";
+};
+
 
 // Lancement du script qui affiche le loadout lors du briefing.
 [] execVM "inventory_briefing.sqf"; 

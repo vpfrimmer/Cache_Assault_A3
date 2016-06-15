@@ -1,7 +1,29 @@
-// Le serveur s'occupe de définir les caches à utiliser en fonction du paramètre et par la magie de l'aléatoire puis broadcast ses décisions lorsqu'il a fini
-
-// On préprocesse la fonction de random pour utilisation sur le serveur
+// Preprocess de la fonction de random et loadout pour utilisation future
 random_fnc = compile preprocessFile "random.sqf";
+call compile preprocessFileLineNumbers "factions.sqf";
+
+// ------------------------------------------------------------------------
+// APPLICATION DES LOADOUTS
+{
+	_bluforFaction = paramsArray select 3;
+	_indFaction = paramsArray select 4;
+	
+	if(side _x == west) then 
+	{
+		[_bluforFaction, _x] call faction_setLoadout;
+	};
+	
+	if(side _x == resistance) then
+	{
+		[_indFaction, _x] call faction_setLoadout;
+	};
+	
+	_x action ["WeaponOnBack", _x]; // pour que le joueur ait l'arme baissée
+	
+} forEach allUnits;
+
+// ------------------------------------------------------------------------
+// CHOIX DES CACHES
 
 // Le nombre de caches désiré est récupéré
 cacheCount = paramsArray select 2;
