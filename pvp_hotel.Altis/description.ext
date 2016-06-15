@@ -1,0 +1,44 @@
+onLoadIntroTime=false;
+onLoadMissionTime=false;
+debriefing=1;
+saving = 0;
+author = Random;
+onLoadName = Hotel Assault;
+OnLoadMission = Aucun plan de bataille ne survit au contact de l'ennemi.;
+loadscreen = "pic.jpg";
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 8;
+	maxPlayers = 22;
+};
+
+enableDebugConsole = 1;
+
+class Params
+{	
+	class TimeBeforeBackup // paramsArray select 0
+	{
+		title = "Temps avant arrivée du CSAT";
+		texts[] = {"0min", "15min", "30min", "45min", "60min", "75min", "90min", "Jamais"};
+		values[] = {150, 900, 1800, 2700, 3600, 4500, 5400, 999999};
+		default = 3600;
+	};
+	
+	class TimeBeforeTeleport // paramsArray select 1
+	{
+		title = "Temps avant départ de l'OTAN";
+		texts[] = {"0min", "2min", "4min", "6min", "8min", "10min", "15min"};
+		values[] = {0, 120, 240, 360, 480, 600, 900};
+		default = 240;
+	};
+	
+	class CacheCount // paramsArray select 2
+	{
+		title = "Nombre de caches";
+		texts[] = {"1", "2", "3", "4", "5", "6"};
+		values[] = {1, 2, 3, 4, 5, 6};
+		default = 3;
+	};
+};
