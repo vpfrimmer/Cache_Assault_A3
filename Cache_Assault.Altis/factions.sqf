@@ -2,8 +2,6 @@ faction_setLoadout =
 {
 	_factionIndex = _this select 0;
 	_unit = _this select 1;
-	
-	_class = _unit getVariable "class";
 
 	switch _factionIndex do 
 	{
@@ -15,7 +13,7 @@ faction_setLoadout =
 		case 10: {[_unit] call loadout_FIA};
 		case 11: {[_unit] call loadout_Takistani};
 		case 12: {[_unit] call loadout_NPFD};
-	};
+	};	
 };
 
 
@@ -30,7 +28,6 @@ loadout_KSK =
 {
 	_unit = _this select 0;
 	_class = _unit getVariable "class";
-	
 	
 	switch _class do 
 	{
@@ -50,7 +47,6 @@ loadout_USSF =
 	_unit = _this select 0;
 	_class = _unit getVariable "class";
 	
-	
 	switch _class do 
 	{
 		case "sl": {_unit setUnitLoadout "CUP_B_FR_Commander"};
@@ -68,7 +64,6 @@ loadout_UK =
 {
 	_unit = _this select 0;
 	_class = _unit getVariable "class";
-	
 	
 	switch _class do 
 	{
@@ -95,7 +90,6 @@ loadout_Takistani =
 	_unit = _this select 0;
 	_class = _unit getVariable "class";
 	
-	
 	switch _class do 
 	{
 		case "sl": {_unit setUnitLoadout "CUP_O_TK_Officer"};
@@ -112,7 +106,6 @@ loadout_NPFD =
 {
 	_unit = _this select 0;
 	_class = _unit getVariable "class";
-	
 	
 	switch _class do 
 	{

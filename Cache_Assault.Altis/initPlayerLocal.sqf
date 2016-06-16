@@ -6,6 +6,7 @@ if(player in [auto1, auto2, auto3, auto4]) then {
 };
 
 // Stuff ACE de base
+
 for "_i" from 1 to 5 do {player addItem "ACE_fieldDressing";};
 player addItem "ACE_tourniquet";
 player addItem "ACE_EarPlugs";
@@ -49,6 +50,8 @@ if(player in [sniper1, sniper2]) then {
 	player addItem "ACE_RangeCard";
 };
 
+// Certains loadouts possèdent des optiques thermiques. Dans le doute..
+player disableTIEquipment true;
 
 // Lancement du script qui affiche le loadout lors du briefing.
-[] execVM "inventory_briefing.sqf"; 
+[] execVM "inventory_briefing.sqf";

@@ -1,6 +1,25 @@
 // Preprocess de la fonction de random et loadout pour utilisation future
 random_fnc = compile preprocessFile "random.sqf";
+placeOnMarker_fnc = compile preprocessFile "placeOnMarker.sqf";
 call compile preprocessFileLineNumbers "factions.sqf";
+
+// ------------------------------------------------------------------------
+// PLACEMENT DES BUNKERS
+// si permis par les paramètres, sinon destruction
+
+_isBunkerAuthorized = paramsArray select 5;
+if(_isBunkerAuthorized == 1) then 
+{
+	['bunker1', bunker1, 1] spawn placeOnMarker_fnc;
+	['bunker2', bunker2, 1] spawn placeOnMarker_fnc;
+	['bunker3', bunker3, 0] spawn placeOnMarker_fnc;
+}
+else 
+{
+	deleteVehicle bunker1;
+	deleteVehicle bunker2;
+	deleteVehicle bunker3;
+};
 
 // ------------------------------------------------------------------------
 // APPLICATION DES LOADOUTS

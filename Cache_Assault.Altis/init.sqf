@@ -104,6 +104,12 @@ if(side player == resistance) then {
 	// GROS BRIEFING PAS BEAU (oui je sais, j'aurais pu le mettre dans un fichier à part)
 	player createDiaryRecord ["Diary", 
 	["Environnement", "Il est 5h15, le jour se lève et la brume du matin se dissipe doucement. Il fait beau pour l'instant, mais le temps ne va pas tarder à se détériorer."]];
+	
+	_isBunkerAuthorized = paramsArray select 5;
+	if(_isBunkerAuthorized == 1) then {
+		player createDiaryRecord ["Diary", 
+		["Bunkers", "Trois positions défensives sont plaçables pendant ce briefing à l'aide de marqueurs.<br/>Pour ce faire, placez un marqueur de type 'flèche', orientez le dans la direction que vous souhaitez donner au bunker, et nommez le du nom de la défense désirée, comme sur l'exemple ci-dessous.<br/><img image='bunkerExemple.jpg'/><br/><br/>Liste des défenses disponibles :<br/><br/>bunker1<br/><img image='bunker1.jpg'/><br/><br/>bunker2<br/><img image='bunker2.jpg'><br/><br/>bunker3<br/><img image='bunker3.jpg'>"]];
+	};
 
 	player createDiaryRecord ["Diary", 
 	["Equipement", "Un technical et deux mitrailleuses montables sont disponibles.<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres."]];
