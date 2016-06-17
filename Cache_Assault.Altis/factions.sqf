@@ -31,14 +31,14 @@ loadout_KSK =
 	
 	switch _class do 
 	{
-		case "sl": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_TL"};
-		case "tl": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_TL"};
-		case "grenadier": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_AT"};
-		case "demo": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_Engineer"};
-		case "auto": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_MG"};
-		case "medic": {_unit setUnitLoadout "CUP_B_GER_Fleck_Medic"};
-		case "marksman": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier_Sniper"};
-		case "rifleman": {_unit setUnitLoadout "CUP_B_GER_Fleck_Soldier"};
+		case "sl": {[_unit, "CUP_B_GER_Fleck_Soldier_TL"] call instantiateAndCopy};
+		case "tl": {[_unit, "CUP_B_GER_Fleck_Soldier_TL"] call instantiateAndCopy};
+		case "grenadier": {[_unit, "CUP_B_GER_Fleck_Soldier_AT"] call instantiateAndCopy};
+		case "demo": {[_unit, "CUP_B_GER_Fleck_Soldier_Engineer"] call instantiateAndCopy};
+		case "auto": {[_unit, "CUP_B_GER_Fleck_Soldier_MG"] call instantiateAndCopy};
+		case "medic": {[_unit, "CUP_B_GER_Fleck_Medic"] call instantiateAndCopy};
+		case "marksman": {[_unit, "CUP_B_GER_Fleck_Soldier_Sniper"] call instantiateAndCopy};
+		case "rifleman": {[_unit, "CUP_B_GER_Fleck_Soldier"] call instantiateAndCopy};
 	};
 };
 
@@ -49,14 +49,14 @@ loadout_USSF =
 	
 	switch _class do 
 	{
-		case "sl": {_unit setUnitLoadout "CUP_B_FR_Commander"};
-		case "tl": {_unit setUnitLoadout "CUP_B_FR_Soldier_TL"};
-		case "grenadier": {_unit setUnitLoadout "CUP_B_FR_Soldier_GL"};
-		case "demo": {_unit setUnitLoadout "CUP_B_FR_Soldier_Exp"};
-		case "auto": {_unit setUnitLoadout "CUP_B_FR_Soldier_AR"};
-		case "medic": {_unit setUnitLoadout "CUP_B_FR_Medic"};
-		case "marksman": {_unit setUnitLoadout "CUP_B_FR_Soldier_Marksman"};
-		case "rifleman": {_unit setUnitLoadout "CUP_B_FR_Soldier_Assault"};
+		case "sl": {[_unit, "CUP_B_FR_Commander"] call instantiateAndCopy};
+		case "tl": {[_unit, "CUP_B_FR_Soldier_TL"] call instantiateAndCopy};
+		case "grenadier": {[_unit, "CUP_B_FR_Soldier_GL"] call instantiateAndCopy};
+		case "demo": {[_unit, "CUP_B_FR_Soldier_Exp"] call instantiateAndCopy};
+		case "auto": {[_unit, "CUP_B_FR_Soldier_AR"] call instantiateAndCopy};
+		case "medic": {[_unit, "CUP_B_FR_Medic"] call instantiateAndCopy};
+		case "marksman": {[_unit, "CUP_B_FR_Soldier_Marksman"] call instantiateAndCopy};
+		case "rifleman": {[_unit, "CUP_B_FR_Soldier_Assault"] call instantiateAndCopy};
 	};
 };
 
@@ -67,14 +67,14 @@ loadout_UK =
 	
 	switch _class do 
 	{
-		case "sl": {_unit setUnitLoadout "CUP_B_BAF_Soldier_SL_WDL"};
-		case "tl": {_unit setUnitLoadout "CUP_B_BAF_Soldier_TL_WDL"};
-		case "grenadier": {_unit setUnitLoadout "CUP_B_BAF_Soldier_GL_WDL"};
-		case "demo": {_unit setUnitLoadout "CUP_B_BAF_Engineer_WDL"};
-		case "auto": {_unit setUnitLoadout "CUP_B_BAF_Soldier_MG_WDL"};
-		case "medic": {_unit setUnitLoadout "CUP_B_BAF_Medic_WDL"};
-		case "marksman": {_unit setUnitLoadout "CUP_B_BAF_Soldier_scout_WDL"};
-		case "rifleman": {_unit setUnitLoadout "CUP_B_BAF_Soldier_WDL"};
+		case "sl": {[_unit, "CUP_B_BAF_Soldier_SL_WDL"] call instantiateAndCopy};
+		case "tl": {[_unit, "CUP_B_BAF_Soldier_TL_WDL"] call instantiateAndCopy};
+		case "grenadier": {[_unit, "CUP_B_BAF_Soldier_GL_WDL"] call instantiateAndCopy};
+		case "demo": {[_unit, "CUP_B_BAF_Engineer_WDL"] call instantiateAndCopy};
+		case "auto": {[_unit, "CUP_B_BAF_Soldier_MG_WDL"] call instantiateAndCopy};
+		case "medic": {[_unit, "CUP_B_BAF_Medic_WDL"] call instantiateAndCopy};
+		case "marksman": {[_unit, "CUP_B_BAF_Soldier_scout_WDL"] call instantiateAndCopy};
+		case "rifleman": {[_unit, "CUP_B_BAF_Soldier_WDL"] call instantiateAndCopy};
 	};
 };
 
@@ -92,13 +92,13 @@ loadout_Takistani =
 	
 	switch _class do 
 	{
-		case "sl": {_unit setUnitLoadout "CUP_O_TK_Officer"};
-		case "tl": {_unit setUnitLoadout "CUP_O_TK_Soldier_SL"};
-		case "grenadier": {_unit setUnitLoadout "CUP_O_TK_Soldier_GL"};
-		case "auto": {_unit setUnitLoadout "CUP_O_TK_Soldier_AR"};
-		case "medic": {_unit setUnitLoadout "CUP_O_TK_Medic"};
-		case "marksman": {_unit setUnitLoadout "CUP_O_TK_INS_Sniper"};
-		case "rifleman": {_unit setUnitLoadout "CUP_O_TK_Soldier"};
+		case "sl": {[_unit, "CUP_O_TK_Officer"] call instantiateAndCopy};
+		case "tl": {[_unit, "CUP_O_TK_Soldier_SL"] call instantiateAndCopy};
+		case "grenadier": {[_unit, "CUP_O_TK_Soldier_GL"] call instantiateAndCopy};
+		case "auto": {[_unit, "CUP_O_TK_Soldier_AR"] call instantiateAndCopy};
+		case "medic": {[_unit, "CUP_O_TK_Medic"] call instantiateAndCopy};
+		case "marksman": {[_unit, "CUP_O_TK_INS_Sniper"] call instantiateAndCopy};
+		case "rifleman": {[_unit, "CUP_O_TK_Soldier"] call instantiateAndCopy};
 	};
 };
 
@@ -109,12 +109,25 @@ loadout_NPFD =
 	
 	switch _class do 
 	{
-		case "sl": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_officer"};
-		case "tl": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_TL"};
-		case "grenadier": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_GL"};
-		case "auto": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_AR"};
-		case "medic": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_Medic"};
-		case "marksman": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_sniper"};
-		case "rifleman": {_unit setUnitLoadout "CPC_Duala_O_NPFD_soldier_1"};
+		case "sl": {[_unit, "CPC_Duala_O_NPFD_soldier_officer"] call instantiateAndCopy};
+		case "tl": {[_unit, "CPC_Duala_O_NPFD_soldier_TL"] call instantiateAndCopy};
+		case "grenadier": {[_unit, "CPC_Duala_O_NPFD_soldier_GL"] call instantiateAndCopy};
+		case "auto": {[_unit, "CPC_Duala_O_NPFD_soldier_AR"] call instantiateAndCopy};
+		case "medic": {[_unit, "CPC_Duala_O_NPFD_soldier_Medic"] call instantiateAndCopy};
+		case "marksman": {[_unit, "CPC_Duala_O_NPFD_soldier_sniper"] call instantiateAndCopy};
+		case "rifleman": {[_unit, "CPC_Duala_O_NPFD_soldier_1"] call instantiateAndCopy};
 	};
 };
+
+instantiateAndCopy = 
+{
+	_unit = _this select 0;
+	_classname = _this select 1;	
+	_grp = createGroup west;
+	
+	_tempUnit = _grp createUnit [_classname, [0,0,0], [], 100, "FORM"]; 
+ 
+	_unit setUnitLoadout (getUnitLoadout _tempUnit);
+	deleteVehicle _tempUnit;	
+};
+
