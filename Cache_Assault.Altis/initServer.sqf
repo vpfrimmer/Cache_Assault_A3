@@ -7,7 +7,7 @@ call compile preprocessFileLineNumbers "factions.sqf";
 // PLACEMENT DES BUNKERS
 // si permis par les paramètres, sinon destruction
 
-_isBunkerAuthorized = paramsArray select 5;
+_isBunkerAuthorized = 0;
 if(_isBunkerAuthorized == 1) then 
 {
 	['bunker1', bunker1, 1] spawn placeOnMarker_fnc;
@@ -20,26 +20,6 @@ else
 	deleteVehicle bunker2;
 	deleteVehicle bunker3;
 };
-
-// ------------------------------------------------------------------------
-// APPLICATION DES LOADOUTS
-{
-	_bluforFaction = paramsArray select 3;
-	_indFaction = paramsArray select 4;
-	
-	if(side _x == west) then 
-	{
-		[_bluforFaction, _x] call faction_setLoadout;
-	};
-	
-	if(side _x == resistance) then
-	{
-		[_indFaction, _x] call faction_setLoadout;
-	};
-	
-	_x action ["WeaponOnBack", _x]; // pour que le joueur ait l'arme baissée
-	
-} forEach allUnits;
 
 // ------------------------------------------------------------------------
 // CHOIX DES CACHES

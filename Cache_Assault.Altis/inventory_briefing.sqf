@@ -66,7 +66,7 @@ _addGroupUnitToDiary =
 	{
 		_cfg = configFile >> "CfgWeapons" >> _x;
 		_pic = getText(_cfg >> "picture") call _addExtPAA;
-		_text = _text + "<img image=""" + _pic + """ height=40 /> ";
+		_text = _text + "<img image=""" + _pic + """ height=70 /> ";
 	} forEach (_weaponsPrimary)+(primaryWeaponItems _unit - [""]);
 	_text = _text + "<br/>";
 
@@ -80,7 +80,7 @@ _addGroupUnitToDiary =
         {
 		_cfg = configFile >> "CfgWeapons" >> _x;
 		_pic = getText(_cfg >> "picture") call _addExtPAA;
-		_text = _text + "<img image=""" + _pic + """ height=40 /> ";
+		_text = _text + "<img image=""" + _pic + """ height=50 /> ";
 	} forEach (_weaponsSec)+(secondaryWeaponItems _unit - [""]);
 	_text = _text + "<br/>";
 
@@ -132,7 +132,7 @@ _addGroupUnitToDiary =
 		_count = _x select 1;
 		for "_i" from 1 to _count do
 		{
-			_text = _text + "<img image=""" + _pic + """ height=24 /> ";
+			_text = _text + "<img image=""" + _pic + """ height=35 /> ";
 		};
 	}forEach _weaponsList;
         _text = _text + "<br/>";
@@ -141,7 +141,7 @@ _addGroupUnitToDiary =
 		_pic = _x select 0;
                 _count = _x select 1;
                 _count = str _count;
-                _text = _text + "<img image=""" + _pic + """ height=24 />" + "x" + _count + "  ";
+                _text = _text + "<img image=""" + _pic + """ height=35 />" + "x" + _count + "  ";
         }forEach _magasinesList;
 	_text = _text + "<br/>";
         _text = _text + "<br/>";

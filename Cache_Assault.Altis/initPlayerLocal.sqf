@@ -1,57 +1,42 @@
-// Bugfix pour certains AR qui spawnent sans sac
-if(player in [auto1, auto2, auto3, auto4]) then {
-	if( isNull (unitBackpack player) ) then {
-		player addBackpack "B_AssaultPack_rgr";
+playerUnit = _this select 0;	// unité du joueur (sélectionnée dans l'écran des slots)
+playerIsJIP = _this select 1;	// boolean (true ou false). True = le joueur se connecte en cours de partie.
+enableSaving [false, false]; // supprime la sauvegarde
+call compile preprocessFileLineNumbers "loadout.sqf";
+if !(isNil {playerUnit getVariable "loadout"}) then // La variable loadout doit être placer dans l'éditeur [init de l'unité] => this setVariable ["loadout", "aaf_sl"];
+{
+	if (isNil {playerUnit getVariable "loadout_done"}) then // loadout_done inexistant, on lance la function loadout
+	{
+		[playerUnit] call hard_setLoadout;
+		playerUnit setVariable ["loadout_done", true, true]; // loadout_done permet de vérifier si le loadout a été fait afin d'éviter les doublons en cas de déco / reco.
 	};
 };
 
-// Stuff ACE de base
-
-for "_i" from 1 to 5 do {player addItem "ACE_fieldDressing";};
-player addItem "ACE_tourniquet";
-player addItem "ACE_EarPlugs";
-for "_i" from 1 to 2 do {player addItem "ACE_CableTie";};
-
-// On donne leur stuff médical aux médics des deux équipes
-if (player in [medic1, medic2, medic3, medic4]) then {
-	clearAllItemsFromBackpack player;
-	
-	_unit = player;
-	
-	_unit addItemToBackpack "ACE_personalAidKit";
-   for "_i" from 1 to 20 do {_unit addItemToBackpack "ACE_fieldDressing";};
-   for "_i" from 1 to 20 do {_unit addItemToBackpack "ACE_packingBandage";};
-   for "_i" from 1 to 15 do {_unit addItemToBackpack "ACE_elasticBandage";};
-   for "_i" from 1 to 10 do {_unit addItemToBackpack "ACE_quikclot";};
-   for "_i" from 1 to 2 do {_unit addItemToBackpack "ACE_salineIV_250";};
-   for "_i" from 1 to 4 do {_unit addItemToBackpack "ACE_salineIV_500";};
-   for "_i" from 1 to 2 do {_unit addItemToBackpack "ACE_salineIV";};
-   for "_i" from 1 to 8 do {_unit addItemToBackpack "ACE_morphine";};
-   for "_i" from 1 to 8 do {_unit addItemToBackpack "ACE_epinephrine";};
-   for "_i" from 1 to 4 do {_unit addItemToBackpack "ACE_tourniquet";};
-};
-
-// On donne de quoi faire boom aux démos
-if (player in [demo1, demo2]) then {
-	clearAllItemsFromBackpack player;
-	
-	_unit = player;
-	
-	_unit addItemToBackpack "ACE_personalAidKit";
-   for "_i" from 1 to 4 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
-   for "_i" from 1 to 4 do {_unit addItemToBackpack "APERSTripMine_Wire_Mag";};
-   player addItemToBackpack "ACE_M26_Clacker";
-   player addItemToBackpack "ACE_DeadManSwitch";
-   player addItemToBackpack "ACE_DefusalKit";
-};
-
-// On donne une rangetable aux marksmen
-if(player in [sniper1, sniper2]) then {
-	player addItem "ACE_RangeCard";
-};
+playerUnit action ["WeaponOnBack", playerUnit]; // pour que le joueur ait l'arme baissée
 
 // Certains loadouts possèdent des optiques thermiques. Dans le doute..
 player disableTIEquipment true;
 
-// Lancement du script qui affiche le loadout lors du briefing.
-[] execVM "inventory_briefing.sqf";
+if !(isMultiplayer) then
+{
+	{
+		if !(isNil {_x getVariable "loadout"}) then 
+		{
+			if (isNil {_x getVariable "loadout_done"}) then 
+			{
+				[_x] call hard_setLoadout;
+				_x setVariable ["loadout_done", true, true];
+			};
+		};
+	} foreach allUnits;
+};
+
+[] execVM "inventory_briefing.sqf"; // lancement du script qui affiche le loadout lors du briefing.
+
+waitUntil {time > 1};
+if ((uniform playerUnit) == "") then {
+call compile preprocessFileLineNumbers "loadout.sqf"; 
+[playerUnit] call hard_setLoadout;
+playerUnit setVariable ["loadout_done", true, true];
+playerUnit action ["WeaponOnBack", playerUnit];
+};
+
