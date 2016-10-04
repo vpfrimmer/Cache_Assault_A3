@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={21989.645,65.703888,21027.529};
-		dir[]={-0.48526874,-0.83405316,0.26262552};
-		up[]={-0.73351163,0.55169392,0.39697248};
-		aside[]={0.475988,2.5704503e-007,0.87950951};
+		pos[]={14648.949,27.919155,16730.807};
+		dir[]={0.89957774,-0.43027467,-0.075089879};
+		up[]={0.42878971,0.90269506,-0.035791785};
+		aside[]={-0.083184123,-1.9998697e-007,-0.99654108};
 	};
 };
 binarizationWanted=0;
@@ -62,18 +62,18 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=27;
+		items=26;
 		class Item0
 		{
 			className="A3_Structures_F";
-			name="Arma 3 Alpha - Buildings and structures";
+			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
 		class Item1
 		{
 			className="A3_Weapons_F_Bootcamp";
-			name="Arma 3 Bootcamp Update - Weapons and accessories";
+			name="Arma 3 Bootcamp Update - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -108,60 +108,78 @@ class AddonsMetaData
 		class Item6
 		{
 			className="A3_Weapons_F_Mark";
-			name="Arma 3 Marksmen - Weapons and accessories";
+			name="Arma 3 Marksmen - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
 		class Item7
 		{
 			className="ace_overheating";
-			name="ace_overheating";
+			name="ACE3 - Overheating";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item8
 		{
 			className="ace_smallarms";
-			name="ace_smallarms";
+			name="ACE3 - Small Arms";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item9
 		{
 			className="ace_ai";
-			name="ace_ai";
+			name="ACE3 - AI";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item10
 		{
 			className="ace_ballistics";
-			name="ace_ballistics";
+			name="ACE3 - Ballistics";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item11
 		{
 			className="ace_reload";
-			name="ace_reload";
+			name="ACE3 - Reload";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item12
 		{
 			className="acre_game";
 			name="acre_game";
+			author="ACRE2 Team";
 		};
 		class Item13
 		{
 			className="ace_attach";
-			name="ace_attach";
+			name="ACE3 - Attach";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item14
 		{
 			className="ace_scopes";
-			name="ace_scopes";
+			name="ACE3 - Scopes";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item15
 		{
 			className="ace_optics";
-			name="ace_optics";
+			name="ACE3 - Optics";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item16
 		{
 			className="ace_rangecard";
-			name="ace_rangecard";
-			author="Ruthberg";
+			name="ACE3 - Range Card";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item17
 		{
@@ -171,17 +189,22 @@ class AddonsMetaData
 		class Item18
 		{
 			className="rhsusf_c_troops";
-			name="rhsusf_c_troops";
+			name="RHSUSF Infantry & Equipment";
+			author="Red Hammer Studios";
+			url="http://www.rhsmods.org/";
 		};
 		class Item19
 		{
 			className="ace_nightvision";
-			name="ace_nightvision";
+			name="ACE3 - Night Vision";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item20
 		{
 			className="acre_api";
 			name="acre_api";
+			author="ACRE2 Team";
 		};
 		class Item21
 		{
@@ -193,7 +216,9 @@ class AddonsMetaData
 		class Item22
 		{
 			className="ace_fastroping";
-			name="ace_fastroping";
+			name="ACE3 - Fastroping";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item23
 		{
@@ -204,17 +229,12 @@ class AddonsMetaData
 		};
 		class Item24
 		{
-			className="ace_vehicles";
-			name="ace_vehicles";
-		};
-		class Item25
-		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
-		class Item26
+		class Item25
 		{
 			className="CUP_Misc3_Config";
 			name="CUP_Misc3_Config";
@@ -351,7 +371,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="CPC-TVT[22]-Hotel_Assault-V4";
+		briefingName="CPC-TVT[22]-Cache_Assault-V1";
 		resistanceWest=0;
 		resistanceEast=1;
 		startWeather=0.049549654;
@@ -774,7 +794,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""sl""];";
+						init="this setVariable [""loadout"", ""sl_ind"", true];";
 						isPlayer=1;
 					};
 					id=35;
@@ -867,7 +887,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""tl""];";
+						init="this setVariable [""loadout"", ""tl_ind"", true];";
 						isPlayable=1;
 					};
 					id=37;
@@ -945,7 +965,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""auto""];";
+						init="this setVariable [""loadout"", ""auto_ind"", true];";
 						name="auto2";
 						isPlayable=1;
 						class Inventory
@@ -1111,7 +1131,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""medic""];";
+						init="this setVariable [""loadout"", ""medic_ind"", true];";
 						name="medic1";
 						isPlayable=1;
 					};
@@ -1191,7 +1211,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""grenadier""];";
+						init="this setVariable [""loadout"", ""grenadier_ind"", true];";
 						isPlayable=1;
 					};
 					id=40;
@@ -1270,7 +1290,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""rifleman""];";
+						init="this setVariable [""loadout"", ""soldier_ind"", true];";
 						isPlayable=1;
 					};
 					id=69;
@@ -1361,7 +1381,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""tl""];";
+						init="this setVariable [""loadout"", ""tl_ind"", true];";
 						isPlayable=1;
 					};
 					id=43;
@@ -1439,7 +1459,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""auto""];";
+						init="this setVariable [""loadout"", ""auto_ind"", true];";
 						name="auto1";
 						isPlayable=1;
 						class Inventory
@@ -1606,7 +1626,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""medic""];";
+						init="this setVariable [""loadout"", ""medic_ind"", true];";
 						name="medic2";
 						isPlayable=1;
 					};
@@ -1686,7 +1706,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""grenadier""];";
+						init="this setVariable [""loadout"", ""grenadier_ind"", true];";
 						isPlayable=1;
 					};
 					id=46;
@@ -1765,7 +1785,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""marksman""];";
+						init="this setVariable [""loadout"", ""marksman_ind"", true];";
 						name="sniper1";
 						isPlayable=1;
 						class Inventory
@@ -1961,7 +1981,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""sl""];";
+						init="this setVariable [""loadout"", ""sl_nato"", true];";
 						name="sl_nato";
 						isPlayable=1;
 					};
@@ -2054,7 +2074,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="this setVariable [""class"", ""tl""];";
+						init="this setVariable [""loadout"", ""tl_nato"", true];";
 						name="tl_nato_1";
 						isPlayable=1;
 					};
@@ -2135,7 +2155,7 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
-						init="this setVariable [""class"", ""auto""];";
+						init="this setVariable [""loadout"", ""auto_nato"", true];";
 						name="auto4";
 						isPlayable=1;
 					};
@@ -2215,7 +2235,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="this setVariable [""class"", ""grenadier""];";
+						init="this setVariable [""loadout"", ""grenadier_nato"", true];";
 						isPlayable=1;
 					};
 					id=55;
@@ -2294,7 +2314,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="this setVariable [""class"", ""medic""];";
+						init="this setVariable [""loadout"", ""medic_nato"", true];";
 						name="medic4";
 						isPlayable=1;
 					};
@@ -2373,7 +2393,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""demo""];";
+						init="this setVariable [""loadout"", ""demo_nato"", true];";
 						name="demo2";
 						isPlayable=1;
 					};
@@ -2466,7 +2486,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="this setVariable [""class"", ""tl""];";
+						init="this setVariable [""loadout"", ""tl_nato"", true];";
 						name="tl_nato_2";
 						isPlayable=1;
 					};
@@ -2547,7 +2567,7 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
-						init="this setVariable [""class"", ""auto""];";
+						init="this setVariable [""loadout"", ""auto_nato"", true];";
 						name="auto3";
 						isPlayable=1;
 					};
@@ -2627,7 +2647,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="this setVariable [""class"", ""medic""];";
+						init="this setVariable [""loadout"", ""medic_nato"", true];";
 						name="medic3";
 						isPlayable=1;
 					};
@@ -2706,7 +2726,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""demo""];";
+						init="this setVariable [""loadout"", ""demo_nato"", true];";
 						name="demo1";
 						isPlayable=1;
 					};
@@ -2785,7 +2805,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""class"", ""marksman""];";
+						init="this setVariable [""loadout"", ""marksman_nato"", true];";
 						name="sniper2";
 						isPlayable=1;
 						class Inventory
@@ -3164,6 +3184,25 @@ class Mission
 				};
 				class Attribute2
 				{
+					property="acre_api_DifficultySettings_IgnoreAntennaDirection";
+					expression="_this setVariable ['IgnoreAntennaDirection',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute3
+				{
 					property="acre_api_DifficultySettings_FullDuplex";
 					expression="_this setVariable ['FullDuplex',_value,true];";
 					class Value
@@ -3181,7 +3220,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=3;
+				nAttributes=4;
 			};
 		};
 		class Item17
@@ -4823,7 +4862,7 @@ class Mission
 		class Item40
 		{
 			dataType="Trigger";
-			position[]={21763.701,35.261475,20998.822};
+			position[]={17107.854,123.53561,16461.43};
 			class Attributes
 			{
 				name="t1_m2";
@@ -4832,6 +4871,7 @@ class Mission
 			};
 			id=165;
 			type="EmptyDetector";
+			atlOffset=80.824875;
 		};
 		class Item41
 		{
@@ -5044,6 +5084,7 @@ class Mission
 			};
 			id=188;
 			type="EmptyDetector";
+			atlOffset=1.0181732;
 		};
 		class Item58
 		{
@@ -5358,6 +5399,7 @@ class Mission
 			};
 			id=214;
 			type="EmptyDetector";
+			atlOffset=0.09885025;
 		};
 		class Item83
 		{

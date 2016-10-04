@@ -1,7 +1,6 @@
 // Preprocess de la fonction de random et loadout pour utilisation future
 random_fnc = compile preprocessFile "random.sqf";
 placeOnMarker_fnc = compile preprocessFile "placeOnMarker.sqf";
-call compile preprocessFileLineNumbers "factions.sqf";
 
 // ------------------------------------------------------------------------
 // PLACEMENT DES BUNKERS
