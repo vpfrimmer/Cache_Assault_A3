@@ -3,6 +3,15 @@ random_fnc = compile preprocessFile "random.sqf";
 placeOnMarker_fnc = compile preprocessFile "placeOnMarker.sqf";
 
 // ------------------------------------------------------------------------
+// BONUS BLUFOR
+
+stomper = 0;
+publicVariable "stomper";
+
+areBonusAuthorized = paramsArray select 3;
+publicVariable "areBonusAuthorized";
+
+// ------------------------------------------------------------------------
 // PLACEMENT DES BUNKERS
 // si permis par les paramètres, sinon destruction
 

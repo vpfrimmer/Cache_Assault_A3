@@ -39,6 +39,21 @@ triggerBackup setTriggerTimeout [inb4CSAT - 150, inb4CSAT, inb4CSAT + 100, false
 // Si le joueur est à l'ouest (pun intended)
 if(side player == west) then {
 
+	// Si les bonus sont autorisés..
+	if(areBonusAuthorized == 1) then 
+	{
+		// On ajoute les addAction qui vont bien sur le tableau à côté de la caisse
+		tab addAction ["Drone Stomper", "bonus\stomper.sqf"];
+		tab addAction ["Grenades HuntIR", "bonus\huntir.sqf"];
+	};
+	
+	// Une fois un bonus choisi, enlève toutes les actions disponibles
+	"areBonusAuthorized" addPublicVariableEventHandler {
+		if(_this select 1 == 0) then {
+			removeAllActions tab;
+		};				
+	};
+
 	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
 	if(isNil "bluforFreq") then {
 		bluforFreq = [1, 50, "round"] call random_fnc;
@@ -58,8 +73,14 @@ if(side player == west) then {
 	player createDiaryRecord ["Diary", 
 	["Environnement", "Il est 5h15, le jour se lève et la brume du matin se dissipe doucement. Il fait beau pour l'instant, mais le temps ne va pas tarder à se détériorer."]];
 
+	if(areBonusAuthorized == 1) then 
+	{
+		player createDiaryRecord ["Diary", 
+		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 8 grenades HuntIR, une console, et un lanceur à main à la caisse."]];
+	};
+	
 	player createDiaryRecord ["Diary", 
-	["Equipement", "Les démolisseurs possèdent chacun 4 charges explosives, 4 mines à fil, 1 détonateur classique, et 1 détonateur de l'homme mort.<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/><br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres."]];
+	["Equipement", "Les démolisseurs possèdent chacun 4 charges explosives, 4 mines à fil, 1 détonateur classique, et 1 détonateur de l'homme mort.<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/><br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres.<br/>Une caisse est disponible à votre point d'insertion. Elle contient entre autres équipements 3 radios 148."]];
 
 	player createDiaryRecord ["Diary", 
 	["Renseignements", "Les forces ennemies sont constituées d'une ou deux équipes d'insurgés aux moyens limités. Restez tout de même sur vos gardes, des postes fixes peuvent être présents."]];

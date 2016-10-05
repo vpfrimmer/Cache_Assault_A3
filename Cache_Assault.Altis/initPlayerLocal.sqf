@@ -1,7 +1,7 @@
 playerUnit = _this select 0;	// unité du joueur (sélectionnée dans l'écran des slots)
 playerIsJIP = _this select 1;	// boolean (true ou false). True = le joueur se connecte en cours de partie.
 enableSaving [false, false]; // supprime la sauvegarde
-call compile preprocessFileLineNumbers "loadouts/loadout.sqf";
+call compile preprocessFileLineNumbers "loadouts\loadout.sqf";
 if !(isNil {playerUnit getVariable "loadout"}) then // La variable loadout doit être placer dans l'éditeur [init de l'unité] => this setVariable ["loadout", "aaf_sl"];
 {
 	if (isNil {playerUnit getVariable "loadout_done"}) then // loadout_done inexistant, on lance la function loadout

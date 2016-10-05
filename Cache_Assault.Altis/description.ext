@@ -29,8 +29,8 @@ class Params
 	class TimeBeforeTeleport // paramsArray select 1
 	{
 		title = "Temps avant départ de Blufor";
-		texts[] = {"0min", "2min", "4min", "6min", "8min", "10min", "15min"};
-		values[] = {0, 120, 240, 360, 480, 600, 900};
+		texts[] = {"30sec", "2min", "4min", "6min", "8min", "10min", "15min"};
+		values[] = {30, 120, 240, 360, 480, 600, 900};
 		default = 240;
 	};
 	
@@ -42,7 +42,13 @@ class Params
 		default = 3;
 	};
 	
-	
+	class BluforBonus // paramsArray select 3
+	{
+		title = "Les Blufor peuvent sélectionner un bonus en début de partie";
+		texts[] = {"Oui", "Non"};
+		values[] = {1, 0};
+		default = 0;
+	}
 	
 	/*class BluforFaction // paramsArray select 3
 	{
