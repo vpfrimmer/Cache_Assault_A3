@@ -52,6 +52,8 @@ hard_setLoadout =
 		case "soldier_ind": {[_unit] call loadoutSOLDIER_IND};
 		case "marksman_ind": {[_unit] call loadoutMARKSMAN_IND};
 	};
+	
+	_unit addItem "ACRE_PRC343";
 };
 
 

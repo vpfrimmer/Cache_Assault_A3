@@ -5,8 +5,6 @@
 waitUntil { time > 3 };
 waitUntil { [] call acre_api_fnc_isInitialized };
 
-player addItem "ACRE_PRC343";
-
 if(side player == west) then { 
  [bluforFreq] call acre_api_fnc_setCurrentRadioChannelNumber; 
 }; 

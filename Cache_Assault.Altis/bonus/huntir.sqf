@@ -4,3 +4,4 @@ caisse addWeaponCargoGlobal ["CUP_glaunch_Mk13", 1];
 
 areBonusAuthorized = 0;
 publicVariable "areBonusAuthorized";
+removeAllActions tab;

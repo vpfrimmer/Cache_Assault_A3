@@ -5,11 +5,14 @@ placeOnMarker_fnc = compile preprocessFile "placeOnMarker.sqf";
 // ------------------------------------------------------------------------
 // BONUS BLUFOR
 
-stomper = 0;
-publicVariable "stomper";
+bStomper = 0;
+publicVariable "bStomper";
+bChopper = 0;
+publicVariable "bChopper";
 
 areBonusAuthorized = paramsArray select 3;
 publicVariable "areBonusAuthorized";
+
 
 // ------------------------------------------------------------------------
 // PLACEMENT DES BUNKERS

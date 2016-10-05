@@ -32,9 +32,4 @@ if (isServer) then {
 			[_time, _x] execVM "teleportWithCountdown.sqf";
 		};
 	} foreach allUnits;
-	    
-    if(stomper == 1) then {
-        [_time, stomper] execVM "teleportWithCountdown.sqf";
-    };
-
 };

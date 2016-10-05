@@ -18,3 +18,24 @@ _unit setPos [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_
 
 // Pour être poli.
 hintSilent "Bon courage !";
+
+publicVariable "launchEH";
+
+// Création du Stomper si choisi
+if(isNil "stomper" && bStomper == 1) then 
+{
+	stomper = createVehicle ["B_UGV_01_F", [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,1.5], [], 0,""];  
+	createVehicleCrew stomper;
+	publicVariable "stomper";
+};
+
+// Déplacement de l'hélico si choisi
+if(bChopper == 1) then {
+	bChopper = 2;
+	publicVariable "bChopper";
+	
+	_tempPos = [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,0];
+	_chopperPos = [_tempPos, 0, 50, 8, 0, 20, 0] call BIS_fnc_findSafePos;
+	chopper setPos _chopperPos;
+	chopper setVehicleLock "UNLOCKED";
+};

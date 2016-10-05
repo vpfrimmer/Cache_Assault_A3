@@ -45,18 +45,17 @@ if(side player == west) then {
 		// On ajoute les addAction qui vont bien sur le tableau à côté de la caisse
 		tab addAction ["Drone Stomper", "bonus\stomper.sqf"];
 		tab addAction ["Grenades HuntIR", "bonus\huntir.sqf"];
+		tab addAction ["Littlebird", "bonus\littlebird.sqf"]
 	};
 	
 	// Une fois un bonus choisi, enlève toutes les actions disponibles
 	"areBonusAuthorized" addPublicVariableEventHandler {
-		if(_this select 1 == 0) then {
-			removeAllActions tab;
-		};				
+		removeAllActions tab;				
 	};
 
 	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
 	if(isNil "bluforFreq") then {
-		bluforFreq = [1, 50, "round"] call random_fnc;
+		bluforFreq = [1, 49] call BIS_fnc_randomInt;
 		publicVariable "bluforFreq";
 	};
 	
@@ -76,7 +75,7 @@ if(side player == west) then {
 	if(areBonusAuthorized == 1) then 
 	{
 		player createDiaryRecord ["Diary", 
-		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 8 grenades HuntIR, une console, et un lanceur à main à la caisse."]];
+		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 8 grenades HuntIR, une console, et un lanceur à la caisse d'objets.<br/>- Littlebird : Un MH-6 Littlebird équipé de fastrope, de parachutes et d'un pod de caméra (non thermique) sera envoyé avec vous sur le terrain."]];
 	};
 	
 	player createDiaryRecord ["Diary", 
@@ -101,7 +100,7 @@ if(side player == resistance) then {
 
 	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
 	if(isNil "indFreq") then {
-		indFreq = [51, 100, "round"] call random_fnc;
+		indFreq = [50, 100] call BIS_fnc_randomInt;
 		publicVariable "indFreq";
 	};
 	

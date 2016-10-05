@@ -4,7 +4,7 @@ debriefing=1;
 saving = 0;
 author = Random;
 onLoadName = Cache Assault;
-OnLoadMission = Aucun plan de bataille ne survit au contact de l'ennemi.;
+OnLoadMission = “Everybody has a plan until they get punched in the mouth” - Mike Tyson;
 loadscreen = "pic.jpg";
 
 class Header
