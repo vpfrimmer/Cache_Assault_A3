@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=432;
+		nextID=433;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={23683.916,11.422632,18048.215};
-		dir[]={0.49414653,-0.3214404,0.80781364};
-		up[]={0.16774294,0.94691819,0.2742193};
-		aside[]={0.85308784,-2.3875327e-007,-0.52184194};
+		pos[]={14649.157,29.329689,16710.701};
+		dir[]={0.70118695,-0.33967957,0.62686527};
+		up[]={0.2532362,0.94054043,0.22639447};
+		aside[]={0.66649312,-1.2828968e-007,-0.74551338};
 	};
 };
 binarizationWanted=0;
@@ -157,6 +157,7 @@ class AddonsMetaData
 		{
 			className="acre_game";
 			name="acre_game";
+			author="ACRE2 Team";
 		};
 		class Item13
 		{
@@ -402,12 +403,12 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="CPC-TVT[22]-Cache_Assault-V1";
+		briefingName="CPC-TVT[22]-Cache_Assault-V2";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=2400;
 		startWeather=0.049549654;
-		startFog=0.19786869;
+		startFog=0.30006665;
 		startWind=0.046802919;
 		startWaves=0.1;
 		forecastWeather=0.30000001;
@@ -427,8 +428,8 @@ class Mission
 		day=1;
 		hour=5;
 		minute=15;
-		startFogDecay=0.014;
-		forecastFogDecay=0.014;
+		startFogDecay=0.010013322;
+		forecastFogDecay=0.0095968014;
 		class CustomAttributes
 		{
 			name="Intel";
@@ -589,7 +590,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=111;
+		items=112;
 		class Item0
 		{
 			dataType="Object";
@@ -4672,7 +4673,7 @@ class Mission
 		class Item38
 		{
 			dataType="Trigger";
-			position[]={17107.854,123.53561,16461.43};
+			position[]={21763.943,35.261269,20998.613};
 			class Attributes
 			{
 				name="t1_m2";
@@ -4681,7 +4682,6 @@ class Mission
 			};
 			id=165;
 			type="EmptyDetector";
-			atlOffset=80.82486;
 		};
 		class Item39
 		{
@@ -6971,12 +6971,13 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={13829.179,15.186518,17350.895};
+				position[]={22464.711,30.518475,20954.234};
+				angles[]={0.062584557,0,6.2698536};
 			};
 			isPlayable=1;
 			id=420;
 			type="VirtualSpectator_F";
-			atlOffset=-9.5367432e-007;
+			atlOffset=1.9073486e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7081,12 +7082,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={13763.612,14.789516,17159.242};
+				position[]={22399.145,54.777073,20762.582};
+				angles[]={0.042640556,0,6.200707};
 			};
 			isPlayable=1;
 			id=421;
 			type="VirtualSpectator_F";
-			atlOffset=0.12663651;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7191,12 +7192,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={13642.567,18.051594,17058.369};
+				position[]={22278.1,49.297516,20661.709};
+				angles[]={6.2166181,0,0.15995523};
 			};
 			isPlayable=1;
 			id=422;
 			type="VirtualSpectator_F";
-			atlOffset=0.014051437;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7301,7 +7302,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14645.721,17.91,16721.66};
+				position[]={9151.918,16.768547,21489.531};
+				angles[]={0.0066682254,0,6.2738566};
 			};
 			id=426;
 			type="ACE_moduleEquipFRIES";
@@ -7311,7 +7313,49 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14648.217,20.026161,16724.473};
+				position[]={9154.4141,18.840792,21492.344};
+				angles[]={0.0066682254,2.4531825,6.2738566};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				lock="UNLOCKED";
+				init="this disableTIEquipment true;";
+				name="chopper";
+			};
+			id=427;
+			type="CUP_B_MH6J_USA";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""ToolKit""],[1]],[[""B_Parachute""],[11]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item111
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14652.716,20.026161,16743.336};
 				angles[]={0,2.4531825,0};
 			};
 			side="Empty";
@@ -7319,10 +7363,10 @@ class Mission
 			class Attributes
 			{
 				lock="LOCKED";
+				fuel=0;
 				init="this disableTIEquipment true;";
-				name="chopper";
 			};
-			id=427;
+			id=432;
 			type="CUP_B_MH6J_USA";
 			class CustomAttributes
 			{

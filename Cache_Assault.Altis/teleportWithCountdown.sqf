@@ -37,5 +37,4 @@ if(bChopper == 1) then {
 	_tempPos = [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,0];
 	_chopperPos = [_tempPos, 0, 50, 8, 0, 20, 0] call BIS_fnc_findSafePos;
 	chopper setPos _chopperPos;
-	chopper setVehicleLock "UNLOCKED";
 };
