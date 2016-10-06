@@ -18,11 +18,9 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-hard_setLoadout = 
+fnc_removeAll = 
 {
-	_unit = _this select 0;
-	_loadout = _unit getVariable "loadout";
+	_unit = this select 0;
 	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
@@ -32,7 +30,12 @@ hard_setLoadout =
 	removeBackpack _unit;
 	removeHeadgear _unit;
 	removeGoggles _unit;
+};
 
+hard_setLoadout = 
+{
+	_unit = _this select 0;
+	_loadout = _unit getVariable "loadout";
 	
 	switch _loadout do 
 	{
@@ -43,6 +46,7 @@ hard_setLoadout =
 		case "grenadier_nato": {[_unit] call loadoutGRENADIER_NATO};
 		case "demo_nato": {[_unit] call loadoutDEMO_NATO};
 		case "marksman_nato": {[_unit] call loadoutMARKSMAN_NATO};
+		case "diver_nato": {[_unit] call loadoutDIVER_NATO};
 		
 		case "sl_ind": {[_unit] call loadoutSL_IND};
 		case "tl_ind": {[_unit] call loadoutTL_IND};
@@ -61,6 +65,7 @@ hard_setLoadout =
 loadoutSL_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_3";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -96,6 +101,7 @@ loadoutSL_NATO = //
 loadoutTL_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -132,6 +138,7 @@ loadoutTL_NATO = //
 loadoutAUTO_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -168,6 +175,7 @@ loadoutAUTO_NATO = //
 loadoutMEDIC_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -214,6 +222,7 @@ loadoutMEDIC_NATO = //
 loadoutGRENADIER_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -248,6 +257,7 @@ loadoutGRENADIER_NATO = //
 loadoutDEMO_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -286,6 +296,7 @@ loadoutDEMO_NATO = //
 loadoutMARKSMAN_NATO = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_B_CTRG_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -319,10 +330,54 @@ loadoutMARKSMAN_NATO = //
 	_unit linkItem "NVGoggles_OPFOR";
 };
 
+loadoutDIVER_NATO = 
+{
+	_unit = _this select 0;
+	
+	_bpItems = backpackItems _unit;
+	
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeUniform _unit;
+	removeVest _unit;
+	removeHeadgear _unit;
+	removeGoggles _unit;
+	
+	_unit addGoggles "G_B_Diving";
+	_unit forceAddUniform "U_B_Wetsuit";
+	for "_i" from 1 to 4 do {_unit addItemToUniform "ACE_fieldDressing";};
+	for "_i" from 1 to 2 do {_unit addItemToUniform "ACE_CableTie";};
+	_unit addItemToUniform "ACE_EarPlugs";
+	_unit addItemToUniform "ACE_Flashlight_XL50";
+	_unit addItemToUniform "ACE_tourniquet";
+	for "_i" from 1 to 2 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
+	_unit addVest "V_RebreatherB";
+
+	comment "Add weapons";
+	_unit addWeapon "arifle_MXC_Black_F";
+	_unit addPrimaryWeaponItem "optic_Aco";
+	_unit addWeapon "hgun_P07_snds_F";
+
+	comment "Add items";
+	_unit linkItem "ItemMap";
+	_unit linkItem "ItemCompass";
+	_unit linkItem "ItemWatch";
+	_unit linkItem "ItemGPS";
+	_unit linkItem "NVGoggles_OPFOR";
+	
+	clearAllItemsFromBackpack _unit;
+	{
+		_unit addItemToBackpack _x;
+	} forEach _bpItems;
+	
+};
+
 // --------------------------- IND --------------------------------------
 loadoutSL_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_IG_leader";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -354,6 +409,7 @@ loadoutSL_IND = //
 loadoutTL_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
@@ -394,6 +450,7 @@ loadoutTL_IND = //
 loadoutAUTO_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_IG_Guerilla2_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -426,6 +483,7 @@ loadoutAUTO_IND = //
 loadoutMEDIC_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_IG_Guerilla2_3";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -465,6 +523,7 @@ loadoutMEDIC_IND = //
 loadoutGRENADIER_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_IG_Guerilla2_3";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -496,6 +555,7 @@ loadoutGRENADIER_IND = //
 loadoutSOLDIER_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_BG_Guerrilla_6_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};
@@ -527,6 +587,7 @@ loadoutSOLDIER_IND = //
 loadoutMARKSMAN_IND = //
 {
 	_unit = _this select 0;
+	[_unit] call fnc_removeAll;
 	
 	_unit forceAddUniform "U_BG_Guerilla2_1";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "ACE_fieldDressing";};

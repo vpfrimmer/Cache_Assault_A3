@@ -39,7 +39,7 @@ class Params
 		title = "Nombre de caches";
 		texts[] = {"1", "2", "3", "4", "5", "6"};
 		values[] = {1, 2, 3, 4, 5, 6};
-		default = 3;
+		default = 2;
 	};
 	
 	class BluforBonus // paramsArray select 3
@@ -50,21 +50,21 @@ class Params
 		default = 0;
 	}
 	
-	/*class BluforFaction // paramsArray select 3
+	class BluforFaction // paramsArray select 4
 	{
-		title = "Faction BLUFOR";
-		texts[] = {"CTRG (MX)", "KSK (G36)", "US SF (M4)", "BAF (L85A2)"};
-		values[] = {0, 1, 2, 3};
+		title = "Faction BLUFOR - Non implémenté";
+		texts[] = {"CTRG (MX)"};
+		values[] = {0};
 		default = 0;
-	};*/
+	};
 	
-	/*class IndFaction // paramsArray select 4
+	class IndFaction // paramsArray select 5
 	{
-		title = "Faction Indépendants";
-		texts[] = {"FIA", "Armée du Takistan (FN FAL)", "NPFD (AK)"};
-		values[] = {10, 11, 12};
+		title = "Faction Indépendants - Non implémenté";
+		texts[] = {"FIA"};
+		values[] = {10};
 		default = 10;
-	};*/
+	};
 	
 	/*class IndBunker // paramsArray select 5
 	{

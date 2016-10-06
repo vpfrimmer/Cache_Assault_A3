@@ -9,6 +9,8 @@ bStomper = 0;
 publicVariable "bStomper";
 bChopper = 0;
 publicVariable "bChopper";
+bSDV = 0;
+publicVariable "bSDV";
 
 areBonusAuthorized = paramsArray select 3;
 publicVariable "areBonusAuthorized";
@@ -46,6 +48,7 @@ Chaque cache est définie par un array [x, y, z] où
 - z est un array de triggers utilisés pour récupérer les positions possibles des caches. Ces triggers sont posés dans l'éditeur et ne servent pas de déclencheurs, juste de "balises de positionnement".
 
 Exemple : le trigger t3_m2 définit la 2ème position possible de la cache c3, qui sera marquée sur map par le marker c3_m2_nato pour blufor, et c3_m2_fia pour les indépendants.
+
 */
 
 c1Spots = ['c1_m1', 'c1_m2', 'c1_m3'];
@@ -76,7 +79,7 @@ selectedCachesArray = [];
 while {count selectedCachesArray < cacheCount} do 
 {
 	// .. tire un index au sort
-	_randIndex = [0, count cacheArray - 1, "round"] call random_fnc; // TODO: ce random n'est pas équitable (osef ?)
+	_randIndex = [0, count cacheArray - 1] call BIS_fnc_randomInt;
 	// .. récupère la cache tirée au sort
 	_newCache = cacheArray select _randIndex;
 	
@@ -100,7 +103,7 @@ selectedMarkers = [];
 { 
 	// .. récupère ses markers et en sélectionne un au hasard
 	_markersArray = _x select 1;
-	_randomMarkerIndex = [0, count _markersArray - 1, "round"] call random_fnc;
+	_randomMarkerIndex = [0, count _markersArray - 1] call BIS_fnc_randomInt;
 	_randomMarker = _markersArray select _randomMarkerIndex;
 	
 	// .. stocke le nom de ce marqueur dans selectedMarkers

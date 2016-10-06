@@ -45,12 +45,21 @@ if(side player == west) then {
 		// On ajoute les addAction qui vont bien sur le tableau à côté de la caisse
 		tab addAction ["Drone Stomper", "bonus\stomper.sqf"];
 		tab addAction ["Grenades HuntIR", "bonus\huntir.sqf"];
-		tab addAction ["Littlebird", "bonus\littlebird.sqf"]
+		tab addAction ["Littlebird", "bonus\littlebird.sqf"];
+		tab addAction ["Insertion en SDV", "bonus\sdv.sqf"];
 	};
 	
 	// Une fois un bonus choisi, enlève toutes les actions disponibles
 	"areBonusAuthorized" addPublicVariableEventHandler {
 		removeAllActions tab;				
+	};
+	
+	// Ajoute les actions au sdv "de démo" si l'insertion en SDV est choisie
+	"bSDV" addPublicVariableEventHandler {
+		// Permet de bouger le point d'insertion du SDV. Ouvre la map, ajoute un OnMapSingleClick permettant le déplacement du point, et ferme la map
+		demoSDV addAction ["Définir le point d'insertion SDV", {openMap true; onMapSingleClick "!(_pos inArea 'nato_4') then {'nato_91' setMarkerPos _pos; openMap false;};";}];
+		// Permet de devenir plongeur. Change le loadout du joueur, puis retire l'action
+		diverActionIndex = demoSDV addAction ["Devenir plongeur", {player setVariable ["loadout", "diver_nato", true];[player] call hard_setLoadout;player setVariable ["loadout_done", true, true]; demoSDV removeAction diverActionIndex; isDiver = 1;}];
 	};
 
 	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
@@ -75,7 +84,7 @@ if(side player == west) then {
 	if(areBonusAuthorized == 1) then 
 	{
 		player createDiaryRecord ["Diary", 
-		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 8 grenades HuntIR, une console, et un lanceur à la caisse d'objets.<br/>- Littlebird : Un MH-6 Littlebird équipé de fastrope, de parachutes et d'un pod de caméra (non thermique) sera envoyé avec vous sur le terrain."]];
+		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 10 grenades HuntIR, une console, et un lanceur à la caisse d'objets.<br/>- Littlebird : Un MH-6 Littlebird équipé de fastrope, de parachutes et d'un pod de caméra (non thermique) sera envoyé avec vous sur le terrain.<br/>- Insertion auxiliaire en SDV : Ajoute deux actions molette à un SDV disponible au démarrage.<br/>La première sert à définir un point sur carte où un SDV sera inséré.<br/>La deuxième sert à devenir plongeur et abandonner votre rôle actuel. Votre loadout sera entièrement changé, à l'exception de votre sac et son contenu. L'action est irréversible et vous serez envoyés sur le point d'insertion SDV au départ."]];
 	};
 	
 	player createDiaryRecord ["Diary", 
@@ -85,7 +94,7 @@ if(side player == west) then {
 	["Renseignements", "Les forces ennemies sont constituées d'une ou deux équipes d'insurgés aux moyens limités. Restez tout de même sur vos gardes, des postes fixes peuvent être présents."]];
 	
 	player createDiaryRecord ["Diary", 
-	["Insertion", "Les chefs de groupe peuvent définir le point d'insertion par un clic sur map (hors de la zone bleue). Vous y serez automatiquement transportés dans quelques minutes (un timer sera présent sur votre écran)."]];
+	["Insertion", "N'importe qui peut définir le point d'insertion par un clic sur map (hors de la zone bleue) pendant le briefing. Vous y serez automatiquement transportés dans quelques minutes (un timer sera présent sur votre écran). Ce point est invisible à l'équipe adverse."]];
 
 	player createDiaryRecord ["Diary", 
 	["Mission", "Vous faites partie d'une équipe chargée de détruire les armes stockées sur le site insurgé avant l'arrivée des renforts et transports du CSAT.<br/>Les positions approximatives des trois caisses ont été marquées sur votre carte par des cercles rouges.<br/><br/>Une fois votre mission accomplie, extrayez-vous sur votre point d'insertion."]];
@@ -110,12 +119,13 @@ if(side player == resistance) then {
 		format ["nato_%1",_x] setMarkerAlphaLocal 0;
 	};
 	
-	// On lance un thread qui passe son temps à cacher le point d'insertion des blufor tant que la partie n'est pas lancée.
+	// On lance un thread qui passe son temps à cacher le(s) point(s) d'insertion des blufor.
 	// Pourquoi? Parce que setMarkerPos provoque un setMarkerAlpha 1 global.
 	_hideYoBallsYo = [] spawn {
-		while{time < 5} do
+		while{true} do
 			{
 				'nato_90' setMarkerAlphaLocal 0;
+				'nato_91' setMarkerAlphaLocal 0;
 			};
 	};
 	
@@ -133,7 +143,7 @@ if(side player == resistance) then {
 	["Equipement", "Un technical et deux mitrailleuses montables sont disponibles.<br/>Des pelles pour tranchées et une centaine de sacs de sable vides sont trouvables à l'intérieur du technical<br/><br/>Vous disposez tous de 343 par défaut assignées à un canal et un bloc aléatoires mais attention, l'ennemi utilise un matériel similaire et si vous deviez vous trouver sur le même canal du même bloc, les ondes seraient partagées :<br/>-Pour changer de bloc, détachez la poignée de votre radio et manipulez le petit switch qui se cache en dessous.<br/>- Si par malchance vous mourrez, sachez que votre radio gardera son canal et son bloc, et que tout ennemi la récupérant serait à même de connaître ses paramètres."]];
 
 	player createDiaryRecord ["Diary", 
-	["Renseignements", "Les forces ennemies sont constituées d'une ou deux équipes d'infanterie. Ils viennent de se mettre en mouvement et arriveront d'une direction inconnue. Vous disposez cependant de quelques minutes avant leur arrivée dans la région.<br/><br/>L'artillerie ennemie est presque à portée. Il vous est interdit de quitter la zone marquée d'un cercle rouge sous peine qu'elle ne profite de votre présence en terrain découvert pour vous engager."]];
+	["Renseignements", "Les forces ennemies sont constituées d'une ou deux équipes d'infanterie. Ils viennent de se mettre en mouvement et arriveront d'une direction inconnue. Vous disposez cependant de quelques minutes avant leur arrivée dans la région.<br/>Nous n'avons aucune information sur leurs moyens et équipement, préparez-vous à tout.<br/><br/>L'artillerie ennemie est presque à portée. Il vous est interdit de quitter la zone marquée d'un cercle rouge sous peine qu'elle ne profite de votre présence en terrain découvert pour vous engager."]];
 	
 	player createDiaryRecord ["Diary", 
 	["Insertion", "Vous êtes insérés à l'entrée du complexe hotelier."]];

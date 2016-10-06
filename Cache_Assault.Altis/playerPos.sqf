@@ -5,8 +5,8 @@
 	A l'origine conçu par Scarlok et/ou Sparfell, un peu modifié par Random.
 */
 
-// Si le joueur est un sl ou tl blufor (nommé dans l'éditeur), un clic sur map changera la position du marqueur d'insertion ('nato_90'), si son clic n'est pas dans la zone restreinte ('nato_4')
-if (player in [sl_nato,tl_nato_1,tl_nato_2]) then {
+// Un clic sur map changera la position du marqueur d'insertion ('nato_90'), si le clic n'est pas dans la zone restreinte ('nato_4')
+if (true) then {
 	onMapSingleClick "
 		if !(_pos inArea 'nato_4') then {'nato_90' setMarkerPos _pos;};
 	";

@@ -14,7 +14,14 @@ while{time < _timer} do {
 };
 
 // LE TP
-_unit setPos [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,1.5];
+_newPos = [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,1.5];
+
+// Si plongeur, va sur le marqueur SDV
+if(isDiver == 1) then {
+	_newPos = [(markerPos "nato_91" select 0) + (random 30) -15,(markerPos "nato_91" select 1)+ (random 30) -15,1.5]
+};
+
+_unit setPos _newPos;
 
 // Pour être poli.
 hintSilent "Bon courage !";
@@ -37,4 +44,15 @@ if(bChopper == 1) then {
 	_tempPos = [(markerPos "nato_90" select 0) + (random 30) -15,(markerPos "nato_90" select 1)+ (random 30) -15,0];
 	_chopperPos = [_tempPos, 0, 50, 8, 0, 20, 0] call BIS_fnc_findSafePos;
 	chopper setPos _chopperPos;
+};
+
+// Création du SDV si choisi
+if(bSDV == 1 && isNil "sdv") then {
+	bSDV = 2;
+	publicVariable bSDV;
+	
+	_tempPos = [(markerPos "nato_91" select 0) + (random 30) -15,(markerPos "nato_91" select 1)+ (random 30) -15,0];
+	sdv = createVehicle ["B_SDV_01_F", tempPos, [], 0,""];
+	sdv disableTIEquipment true;
+	publicVariable "sdv";
 };
