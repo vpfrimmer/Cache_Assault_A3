@@ -55,9 +55,10 @@ if(side player == west) then {
 	};
 	
 	// Ajoute les actions au sdv "de démo" si l'insertion en SDV est choisie
+	isDiver = 0;
 	"bSDV" addPublicVariableEventHandler {
 		// Permet de bouger le point d'insertion du SDV. Ouvre la map, ajoute un OnMapSingleClick permettant le déplacement du point, et ferme la map
-		demoSDV addAction ["Définir le point d'insertion SDV", {openMap true; onMapSingleClick "!(_pos inArea 'nato_4') then {'nato_91' setMarkerPos _pos; openMap false;};";}];
+		demoSDV addAction ["Définir le point d'insertion SDV", {openMap true; onMapSingleClick "if !(_pos inArea 'nato_4') then {'nato_91' setMarkerPos _pos; onMapSingleClick '';};";}];
 		// Permet de devenir plongeur. Change le loadout du joueur, puis retire l'action
 		diverActionIndex = demoSDV addAction ["Devenir plongeur", {player setVariable ["loadout", "diver_nato", true];[player] call hard_setLoadout;player setVariable ["loadout_done", true, true]; demoSDV removeAction diverActionIndex; isDiver = 1;}];
 	};
@@ -84,7 +85,7 @@ if(side player == west) then {
 	if(areBonusAuthorized == 1) then 
 	{
 		player createDiaryRecord ["Diary", 
-		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/>- Grenades HuntIR : Ajoute 10 grenades HuntIR, une console, et un lanceur à la caisse d'objets.<br/>- Littlebird : Un MH-6 Littlebird équipé de fastrope, de parachutes et d'un pod de caméra (non thermique) sera envoyé avec vous sur le terrain.<br/>- Insertion auxiliaire en SDV : Ajoute deux actions molette à un SDV disponible au démarrage.<br/>La première sert à définir un point sur carte où un SDV sera inséré.<br/>La deuxième sert à devenir plongeur et abandonner votre rôle actuel. Votre loadout sera entièrement changé, à l'exception de votre sac et son contenu. L'action est irréversible et vous serez envoyés sur le point d'insertion SDV au départ."]];
+		["Bonus", "Les bonus sont activés. Vous pouvez choisir lequel utiliser via le menu molette sur un panneau d'affichage à votre apparition.<br/><br/>Liste des bonus disponibles :<br/><br/>- Drone Stomper : Une console de contrôle drône apparait dans la caisse, et un Stomper non-armé sera envoyé avec vous sur le terrain.<br/><br/>- Grenades HuntIR : Ajoute 10 grenades HuntIR, une console, et un lanceur à la caisse d'objets.<br/><br/>- Littlebird : Un MH-6 Littlebird équipé de fastrope, de parachutes et d'un pod de caméra (non thermique) sera envoyé avec vous sur le terrain.<br/><br/>- Insertion auxiliaire en SDV : Ajoute deux actions molette à un SDV disponible au démarrage.<br/>    La première sert à définir un point sur carte où un SDV sera inséré.<br/>    La deuxième sert à devenir plongeur et abandonner votre rôle actuel.<br/>    Votre loadout sera entièrement changé, à l'exception de votre sac et son contenu. L'action est irréversible et vous serez envoyés sur le point d'insertion SDV au départ."]];
 	};
 	
 	player createDiaryRecord ["Diary", 

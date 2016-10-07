@@ -20,7 +20,7 @@
 
 fnc_removeAll = 
 {
-	_unit = this select 0;
+	_unit = _this select 0;
 	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
@@ -344,25 +344,30 @@ loadoutDIVER_NATO =
 	removeHeadgear _unit;
 	removeGoggles _unit;
 	
-	_unit addGoggles "G_B_Diving";
 	_unit forceAddUniform "U_B_Wetsuit";
-	for "_i" from 1 to 4 do {_unit addItemToUniform "ACE_fieldDressing";};
-	for "_i" from 1 to 2 do {_unit addItemToUniform "ACE_CableTie";};
+	for "_i" from 1 to 3 do {_unit addItemToUniform "ACE_fieldDressing";};
+	_unit addItemToUniform "ACE_CableTie";
 	_unit addItemToUniform "ACE_EarPlugs";
 	_unit addItemToUniform "ACE_Flashlight_XL50";
 	_unit addItemToUniform "ACE_tourniquet";
 	for "_i" from 1 to 2 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
+	for "_i" from 1 to 4 do {_unit addItemToUniform "30Rnd_65x39_caseless_mag";};
+	_unit addItemToUniform "30Rnd_65x39_caseless_mag_Tracer";
 	_unit addVest "V_RebreatherB";
+	_unit addGoggles "G_B_Diving";
 
 	comment "Add weapons";
 	_unit addWeapon "arifle_MXC_Black_F";
+	_unit addPrimaryWeaponItem "ACE_muzzle_mzls_H";
+	_unit addPrimaryWeaponItem "acc_flashlight";
 	_unit addPrimaryWeaponItem "optic_Aco";
-	_unit addWeapon "hgun_P07_snds_F";
+	_unit addWeapon "hgun_P07_F";
+	_unit addHandgunItem "muzzle_snds_L";
 
 	comment "Add items";
 	_unit linkItem "ItemMap";
 	_unit linkItem "ItemCompass";
-	_unit linkItem "ItemWatch";
+	_unit linkItem "ACE_Altimeter";
 	_unit linkItem "ItemGPS";
 	_unit linkItem "NVGoggles_OPFOR";
 	

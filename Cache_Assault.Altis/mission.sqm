@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=433;
+		nextID=438;
 	};
 	class MarkerIDProvider
 	{
-		nextID=7;
+		nextID=8;
 	};
 	class Camera
 	{
-		pos[]={14649.157,29.329689,16710.701};
-		dir[]={0.70118695,-0.33967957,0.62686527};
-		up[]={0.2532362,0.94054043,0.22639447};
-		aside[]={0.66649312,-1.2828968e-007,-0.74551338};
+		pos[]={14670.958,22.556164,16739.512};
+		dir[]={-0.59349334,-0.56033552,0.57775533};
+		up[]={-0.401508,0.82826281,0.39086106};
+		aside[]={0.69754601,4.8428774e-008,0.71654761};
 	};
 };
 binarizationWanted=0;
@@ -62,13 +62,14 @@ addons[]=
 	"A3_Drones_F_Soft_F_Gamma_UGV_01",
 	"A3_Data_F_Exp_A_Virtual",
 	"CUP_Littlebirds",
-	"CUP_Vehicles_ACE_compat"
+	"CUP_Vehicles_ACE_compat",
+	"A3_Boat_F_Beta_SDV_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=30;
+		items=31;
 		class Item0
 		{
 			className="A3_Structures_F";
@@ -271,6 +272,13 @@ class AddonsMetaData
 			name="CUP_Vehicles_ACE_compat";
 			author="Community Upgrade Project";
 		};
+		class Item30
+		{
+			className="A3_Boat_F_Beta";
+			name="Arma 3 Beta - Boats and Submersibles";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
 	};
 };
 randomSeed=958425;
@@ -403,7 +411,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="CPC-TVT[22]-Cache_Assault-V2";
+		briefingName="CPC-TVT[22]-Cache_Assault-V3";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=2400;
@@ -590,7 +598,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=112;
+		items=114;
 		class Item0
 		{
 			dataType="Object";
@@ -7326,6 +7334,7 @@ class Mission
 			};
 			id=427;
 			type="CUP_B_MH6J_USA";
+			atlOffset=-0.0020046234;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7355,7 +7364,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14652.716,20.026161,16743.336};
+				position[]={14648.89,20.026161,16724.357};
 				angles[]={0,2.4531825,0};
 			};
 			side="Empty";
@@ -7391,6 +7400,60 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item112
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14665.646,19.784609,16741.504};
+				angles[]={0,2.6279597,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				lock="LOCKED";
+				name="demoSDV";
+			};
+			id=433;
+			type="B_SDV_01_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item113
+		{
+			dataType="Marker";
+			position[]={21326.955,-1.9337218e-026,23760.258};
+			name="nato_91";
+			text="SDV";
+			type="mil_start";
+			colorName="ColorWEST";
+			a=0.60000002;
+			b=0.60000002;
+			id=434;
+			atlOffset=185.79065;
 		};
 	};
 	class Connections
