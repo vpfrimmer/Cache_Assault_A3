@@ -1,0 +1,76 @@
+onLoadIntroTime=false;
+onLoadMissionTime=false;
+debriefing=1;
+saving = 0;
+author = Random;
+onLoadName = Cache Assault;
+OnLoadMission = “Everybody has a plan until they get punched in the mouth” - Mike Tyson;
+loadscreen = "pic.jpg";
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 8;
+	maxPlayers = 22;
+};
+
+enableDebugConsole = 1;
+
+class Params
+{	
+	class TimeBeforeBackup // paramsArray select 0
+	{
+		title = "Temps avant arrivée de Opfor";
+		texts[] = {"0min", "15min", "30min", "45min", "60min", "75min", "90min", "Jamais"};
+		values[] = {150, 900, 1800, 2700, 3600, 4500, 5400, 999999};
+		default = 3600;
+	};
+	
+	class TimeBeforeTeleport // paramsArray select 1
+	{
+		title = "Temps avant départ de Blufor";
+		texts[] = {"30sec", "2min", "4min", "6min", "8min", "10min", "15min"};
+		values[] = {30, 120, 240, 360, 480, 600, 900};
+		default = 240;
+	};
+	
+	class CacheCount // paramsArray select 2
+	{
+		title = "Nombre de caches";
+		texts[] = {"1", "2", "3", "4", "5", "6"};
+		values[] = {1, 2, 3, 4, 5, 6};
+		default = 2;
+	};
+	
+	class BluforBonus // paramsArray select 3
+	{
+		title = "Les Blufor peuvent sélectionner un bonus en début de partie";
+		texts[] = {"Oui", "Non"};
+		values[] = {1, 0};
+		default = 0;
+	}
+	
+	class BluforFaction // paramsArray select 4
+	{
+		title = "Faction BLUFOR - Non implémenté";
+		texts[] = {"CTRG (MX)"};
+		values[] = {0};
+		default = 0;
+	};
+	
+	class IndFaction // paramsArray select 5
+	{
+		title = "Faction Indépendants - Non implémenté";
+		texts[] = {"FIA"};
+		values[] = {10};
+		default = 10;
+	};
+	
+	/*class IndBunker // paramsArray select 5
+	{
+		title = "Les indépendants peuvent placer des défenses (bunker et sacs de sables)";
+		texts[] = {"Oui", "Non"};
+		values[] = {1, 0};
+		default = 1;
+	};*/
+};
