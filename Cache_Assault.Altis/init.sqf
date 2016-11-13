@@ -39,6 +39,8 @@ triggerBackup setTriggerTimeout [inb4CSAT - 150, inb4CSAT, inb4CSAT + 100, false
 // Si le joueur est à l'ouest (pun intended)
 if(side player == west) then {
 
+	"nato_91" setMarkerAlphaLocal 0;
+	
 	// Si les bonus sont autorisés..
 	if(areBonusAuthorized == 1) then 
 	{
@@ -57,10 +59,11 @@ if(side player == west) then {
 	// Ajoute les actions au sdv "de démo" si l'insertion en SDV est choisie
 	isDiver = 0;
 	"bSDV" addPublicVariableEventHandler {
+		'nato_91' setMarkerAlphaLocal 1;
 		// Permet de bouger le point d'insertion du SDV. Ouvre la map, ajoute un OnMapSingleClick permettant le déplacement du point, et ferme la map
 		demoSDV addAction ["Définir le point d'insertion SDV", {openMap true; onMapSingleClick "if !(_pos inArea 'nato_4') then {'nato_91' setMarkerPos _pos; onMapSingleClick '';};";}];
 		// Permet de devenir plongeur. Change le loadout du joueur, puis retire l'action
-		diverActionIndex = demoSDV addAction ["Devenir plongeur", {player setVariable ["loadout", "diver_nato", true];[player] call hard_setLoadout;player setVariable ["loadout_done", true, true]; demoSDV removeAction diverActionIndex; isDiver = 1;}];
+		diverActionIndex = demoSDV addAction ["Devenir plongeur", {player setVariable ["loadout", "diver_nato", true];[player] call hard_setLoadout;player setVariable ["loadout_done", true, true]; demoSDV removeAction diverActionIndex; isDiver = 1; _null = execVM "randomChannelAcre.sqf";}];
 	};
 
 	// Si sa fréquence ACRE aléatoire n'a pas été définie, on lance un dé puis on broadcast
